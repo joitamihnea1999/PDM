@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Esperanto.DesprePage"
+             Title="Despre"
+             BackgroundImageSource="Background.png">
+    
+    <ContentPage.Content>
+
+        <StackLayout HorizontalOptions="Center">
+
+
+            <Label Text="v1.0"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"  TextColor="Black" FontSize="Large" FontAttributes="Bold"/>
+
+            <StackLayout HorizontalOptions="Center" Margin="0,0,0,25">
+                <Label
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"  TextColor="Black"  Text="Aplicatia a fost realizata de:" FontSize="Large" InputTransparent="False" IsVisible="True" IsTabStop="True" LineBreakMode="NoWrap" FontAttributes="Bold"/>
+                
+                <Label
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"  TextColor="Black" Text="Joita Mihnea" FontAttributes="Bold"/>
+                
+                <Label
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand" TextColor="Black"  Text="Simion Alexandra" FontAttributes="Bold"/>
+                
+                <Label
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"  TextColor="Black" Text="Sfetcu Andreea" FontAttributes="Bold"/>
+
+                <Label
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"  TextColor="Black" Text="Istrate Laurentiu" FontAttributes="Bold"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

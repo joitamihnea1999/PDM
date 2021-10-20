@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Esperanto" 
+             x:Class="Esperanto.AppShell">
+
+    <FlyoutItem Title="Home">
+        <ShellContent>
+            <local:MainPage/>
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Profil">
+        <ShellContent>
+            <local:ProfilPage/>
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Despre">
+        <ShellContent>
+            <local:DesprePage/>
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Comanda">
+        <ShellContent>
+            <local:ComandaPage/>
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Istoric Comenzi">
+        <ShellContent>
+            <local:IstoricComenziPage/>
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Login">
+        <ShellContent>
+            <local:LoginPage/>
+        </ShellContent>
+    </FlyoutItem>
+</Shell>
