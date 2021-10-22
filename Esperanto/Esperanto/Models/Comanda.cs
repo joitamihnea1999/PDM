@@ -17,9 +17,13 @@ namespace Esperanto.Models
 
         [TextBlob("PizzeBlobbed")]
         public List<Pizza> Pizze { get; set; }
-        public string PizzeBlobbed { get; set; }
 
-        public double PretTotal { get; set; }
+        [TextBlob("CantitatiPizzaBlobbed")]
+        public List<int> cantitatiPizza { get; set; }
+
+        public string CantitatiPizzaBlobbed { get; set; }
+
+        public string PizzeBlobbed { get; set; }
 
         public string Adresa { get; set; }
 

@@ -3,17 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Esperanto.CreareProfilPage"
              Title="Creare Cont"
-             BackgroundImageSource="Background.png">
+             >
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Creaza-ti un cont!"
-                VerticalOptions="CenterAndExpand" 
+            <Label Text="Create your account" Margin="40"
+            
                 HorizontalOptions="CenterAndExpand" />
 
-            <Entry Keyboard="Text" x:Name="entryNume" Placeholder="Nume"/>
-            <Entry Keyboard="Text" x:Name="entryParola" Placeholder="Parola"/>
             <Entry Keyboard="Text" x:Name="entryEmail" Placeholder="Email"/>
+            <Entry Keyboard="Text" x:Name="entryParola" IsPassword="True" Placeholder="Parola"/>
+            <Entry Keyboard="Text" x:Name="entryNume" Placeholder="Nume"/>
             <Entry Keyboard="Text" x:Name="entryTelefon"  Placeholder="Telefon"/>
             <Button Text="Salveaza" Clicked="SalveazaCont_Clicked" />
 

@@ -1,4 +1,5 @@
 ﻿using Esperanto.Models;
+using Esperanto.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +16,13 @@ namespace Esperanto
         public MainPage()
         {
             InitializeComponent();
+            DBService dbservice = new DBService();
 
-            Pizza pizza = new Pizza();
+            var pizzas = dbservice.GetPizzas();
+            pizzaListView.ItemsSource = pizzas;      
         }
 
+       
         private void Setari_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new SetariPage());

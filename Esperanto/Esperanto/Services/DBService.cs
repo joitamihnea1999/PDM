@@ -9,21 +9,68 @@ namespace Esperanto.Services
 {
     class DBService
     {
-        SQLiteConnection connection;
+        private static SQLiteConnection connection = null;
+
 
         public DBService()
         {
-            string cale;
+            if (connection == null)
+            {
+                string cale;
 
-            cale = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "esperanto.db");
+                cale = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "esperanto.db");
+                Console.WriteLine(cale);
 
-            connection = new SQLiteConnection(cale);
+                connection = new SQLiteConnection(cale);
 
-            connection.CreateTable<Curs>();
-            connection.CreateTable<Pizza>();
-            connection.CreateTable<Profil>();
-            connection.CreateTable<Comanda>();
+
+                connection.CreateTable<Curs>();
+                connection.CreateTable<Pizza>();
+                connection.CreateTable<Profil>();
+                connection.CreateTable<Comanda>();
+
+                var pizzas = connection.Query<Pizza>("SELECT * FROM Pizza");
+
+                if (pizzas.Count == 0)
+                {
+                    List<Pizza> initialPizzas = new List<Pizza>();
+                    initialPizzas.Add(new Pizza("Capriciosa", 30, 25, "Pizza"));
+                    initialPizzas.Add(new Pizza("Neapolitan", 30, 28, "Pizza"));
+                    initialPizzas.Add(new Pizza("Chicago ", 30, 29, "Pizza"));
+                    initialPizzas.Add(new Pizza("New York-Style", 30, 30, "Pizza"));
+                    initialPizzas.Add(new Pizza("Sicilian", 30, 30, "Pizza"));
+                    initialPizzas.Add(new Pizza("Greek ", 30, 25, "Pizza"));
+                    initialPizzas.Add(new Pizza("California ", 30, 25, "Pizza"));
+                    initialPizzas.Add(new Pizza("Detroit ", 30, 30, "Pizza"));
+                    initialPizzas.Add(new Pizza("Tonda Romana", 30, 30, "Pizza"));
+                    initialPizzas.Add(new Pizza("Fritta ", 30, 30, "Pizza"));
+
+                    connection.InsertAll(initialPizzas);
+
+                }
+
+            }
+
         }
+
+
+        
+
+
+
+        public List<Profil> GetProfils()
+        {
+            var x = connection.Query<Profil>("SELECT * FROM Profil");
+            Console.WriteLine(x);
+            return x;
+        }
+
+        public List<Pizza> GetPizzas()
+        {
+            var x = connection.Query<Pizza>("SELECT * FROM Pizza");
+            return x;
+        }
+
 
         public int AdaugaCurs(Curs curs)
         {

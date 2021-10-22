@@ -26,6 +26,12 @@ namespace Esperanto
             string email = entryEmail.Text;
             string telefon = entryTelefon.Text;
 
+            //if(parola.Length < 6)
+            //{
+            //    await DisplayAlert("Password is too short", "The password should be at least 6 characters long", "OK");
+            //    return;
+            //}
+
             Profil profilNou = new Profil(nume, parola, email, telefon);
 
             DBService dbservice = new DBService();
@@ -35,7 +41,9 @@ namespace Esperanto
             if(profilExistent == null)
             {
                 dbservice.AdaugaProfil(profilNou);
+              var x =  dbservice.GetProfils();
                 await DisplayAlert("Succes", "Contul a fost creat cu succes!", "OK");
+               
                 await Navigation.PopAsync();
                 await Navigation.PushAsync(new LoginPage());
             }

@@ -3,13 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Esperanto.ComandaPage"
              Title="Comanda"
-             BackgroundImageSource="Background.png">
-    
+             >
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout WidthRequest="400" Margin="40" HorizontalOptions="Center">
+
+            <Picker x:Name="pizzaPicker"  Title="Alege Pizza" SelectedIndexChanged="pizzaPicker_SelectedIndexChanged"
+                    />
+
+            <Entry x:Name="entryCantitate" Placeholder="1" />
+
+            <Entry x:Name="entryAdresa" Placeholder="Adresa" />
+
+            <Button Text="Adauga la comanda" Clicked="Button_Clicked" />
+
+
+            <Label  x:Name="summary" Text="Sumar comanda: "
+             FontSize="Large" TextColor="Black" Margin="10,10,0,0" />
+
         </StackLayout>
     </ContentPage.Content>
+
+    
 </ContentPage>

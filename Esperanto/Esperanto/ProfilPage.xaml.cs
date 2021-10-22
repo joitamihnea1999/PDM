@@ -22,12 +22,10 @@ namespace Esperanto
 
             if (idProfilLogat != 0)
             {
-                Console.WriteLine("da - " + idProfilLogat);
                 DBService dbservice = new DBService();
                 Profil profil = dbservice.CautaProfilDupaId(idProfilLogat);
                 List<Profil> listaProfil = new List<Profil>();
                 listaProfil.Add(profil);
-                Console.WriteLine(profil.Telefon);
                 listViewProfil.ItemsSource = listaProfil;
             }
             else

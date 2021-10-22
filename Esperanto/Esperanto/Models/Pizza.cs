@@ -13,15 +13,23 @@ namespace Esperanto.Models
         public double Diametru { get; set; }
         public double Pret { get; set; }
 
+        public string Image { get; set; }
+
         public Pizza()
         { 
         
         }
-        public Pizza(string denumire, double diametru, double pret)
+        public Pizza(string denumire, double diametru, double pret, string image)
         {
             Denumire = denumire;
             Diametru = diametru;
             Pret = pret;
+            Image = image;
+        }
+
+        public override string ToString()
+        {
+            return Denumire;
         }
     }
 }
