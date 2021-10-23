@@ -1,7 +1,9 @@
 ﻿using Esperanto.Models;
 using Esperanto.Services;
+using SQLite;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,17 +19,41 @@ namespace Esperanto
         private List<Pizza> pizzas;
         private List<int> cantitatiPizza;
         private DBService dbService;
+        private Pizza lastSelectedPizza = new Pizza();
+        private Profil profil;
+        private string adresa;
         public ComandaPage()
         {
             InitializeComponent();
+            
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
             pizzas = new List<Pizza>();
             cantitatiPizza = new List<int>();
             dbService = new DBService();
-            pizzaPicker.ItemsSource = dbService.GetPizzas();
+            if(pizzaPicker.ItemsSource == null)
+            {
+                pizzaPicker.ItemsSource = dbService.GetPizzas();
+            }
+            
             pizzaPicker.SelectedIndex = 0;
+            profil = dbService.getCurrentProfil();
+            summary.Text += "\n";
+            if (profil == null)
+            {
+                await DisplayAlert("Eroare", "Inca nu esti logat!", "OK");
+                await Navigation.PopAsync();
+                await Navigation.PushAsync(new LoginPage());
+
+
+            }
         }
 
-        private async Task Button_ClickedAsync(object sender, EventArgs e)
+
+        private async void Button_Clicked(object sender, EventArgs e)
         {
 
             int cantitatePizza;
@@ -35,9 +61,9 @@ namespace Esperanto
             try
             {
                 cantitatePizza = Convert.ToInt32(entryCantitate.Text);
-                if(cantitatePizza < 1 || cantitatePizza > 99)
+                if (cantitatePizza < 1 || cantitatePizza > 99)
                 {
-                    await DisplayAlert("Eroare", "Cantitatea trebuie sa fie un numbar natural mai mic de 100", "OK");
+                    DisplayAlert("Eroare", "Cantitatea trebuie sa fie un numbar natural mai mic de 100", "OK");
                     return;
                 }
 
@@ -49,28 +75,39 @@ namespace Esperanto
 
             }
 
-            string adresaComanda = entryAdresa.Text;
 
-            DBService dbservice = new DBService();
-
-
-            
-            
-
-        }
-
-       
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
+            pizzas.Add(lastSelectedPizza);
+            cantitatiPizza.Add(cantitatePizza);
+            summary.Text += lastSelectedPizza.ToString() + " x " + cantitatePizza + "\n" ;
 
         }
 
         private void pizzaPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Pizza selectedPizza = dbService.GetPizzas()[pizzaPicker.SelectedIndex];
-            summary.Text = selectedPizza.ToString();
+            lastSelectedPizza = dbService.GetPizzas()[pizzaPicker.SelectedIndex];
 
+        }
+
+        private async void submitComanda(object sender, EventArgs e)
+        {
+            adresa = entryAdresa.Text != null ? entryAdresa.Text : "";
+
+
+            if (adresa.Length < 10)
+            {
+                await DisplayAlert("Eroare", "Trebuie sa introduceti adresa si sa aiba minim 10 caractere", "OK");
+                return;
+            }
+
+            Comanda c = new Comanda(pizzas, profil, cantitatiPizza, adresa);
+            var asyncConnection = dbService.getAsyncDb();
+
+            await SQLiteNetExtensionsAsync.Extensions.WriteOperations.
+              InsertWithChildrenAsync(asyncConnection, c);
+           await DisplayAlert("Success!", "Comanda a fost realizata cu success. O puteti vedea in sectiunea Istoric Comenzi", "OK");
+            entryAdresa.Text = "";
+            adresa = "";
+            summary.Text = "\n";
         }
     }
 }

@@ -18,17 +18,17 @@ namespace Esperanto
         {
             InitializeComponent();
 
-            int idProfilLogat = Convert.ToInt32(Preferences.Get("idProfilLogat", "0"));
-
-            if (idProfilLogat != 0)
-            {
+           
                 DBService dbservice = new DBService();
-                Profil profil = dbservice.CautaProfilDupaId(idProfilLogat);
                 List<Profil> listaProfil = new List<Profil>();
-                listaProfil.Add(profil);
+            Profil currentProfil = dbservice.getCurrentProfil();
+            if(currentProfil != null)
+            {
+                listaProfil.Add(currentProfil);
                 listViewProfil.ItemsSource = listaProfil;
             }
-            else
+                else
+           
             {
                 DisplayAlert("Eroare", "Inca nu esti logat!", "OK");
             }

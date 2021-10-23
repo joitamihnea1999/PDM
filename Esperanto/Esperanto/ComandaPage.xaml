@@ -13,13 +13,17 @@
 
             <Entry x:Name="entryCantitate" Placeholder="1" />
 
-            <Entry x:Name="entryAdresa" Placeholder="Adresa" />
 
             <Button Text="Adauga la comanda" Clicked="Button_Clicked" />
 
 
             <Label  x:Name="summary" Text="Sumar comanda: "
              FontSize="Large" TextColor="Black" Margin="10,10,0,0" />
+
+            <Entry x:Name="entryAdresa" Placeholder="Adresa" />
+
+
+            <Button Text="Finalizeaza comanda" Clicked="submitComanda" />
 
         </StackLayout>
     </ContentPage.Content>

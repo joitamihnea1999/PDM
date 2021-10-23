@@ -9,13 +9,13 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Setari" Order="Secondary" Clicked="Setari_Clicked"/>
     </ContentPage.ToolbarItems>
- 
-    <ListView x:Name="pizzaListView" SeparatorColor="#406343" SeparatorVisibility="Default" RowHeight="350">
+
+    <ListView x:Name="pizzaListView" SeparatorColor="#406343" SeparatorVisibility="Default"  >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell >
                     <StackLayout Margin="0,20">
-                        <Image Source="{Binding Image, StringFormat='{0}.jpg'}"  MinimumHeightRequest="300" MinimumWidthRequest="100" />
+                        <Image Source="{Binding Image, StringFormat='{0}.jpg'}"  MinimumHeightRequest="300" MinimumWidthRequest="100"  HeightRequest="300" WidthRequest="100" />
                         <Label Text="{Binding Denumire, StringFormat='Denumire: {0}'}" VerticalOptions="Center"/>
                         <Label Text="{Binding Diametru, StringFormat='Diametru: {0}'}" VerticalOptions="Center"/>
                         <Label Text="{Binding Pret, StringFormat='Pret: {0}'}" VerticalOptions="Center"/>

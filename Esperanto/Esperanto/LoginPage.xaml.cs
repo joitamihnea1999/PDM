@@ -43,7 +43,7 @@ namespace Esperanto
                 }
 
                 Preferences.Set("idProfilLogat", profil.Id.ToString());
-                await Navigation.PushAsync(new ProfilPage());
+                await Navigation.PushAsync(new MainPage());
             }
             else
             {

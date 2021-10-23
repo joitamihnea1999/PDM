@@ -4,16 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Xamarin.Essentials;
 
 namespace Esperanto.Services
 {
     class DBService
     {
-        private static SQLiteConnection connection = null;
+        private  SQLiteConnection connection = null;
+
+        private SQLiteAsyncConnection asyncDb;
+
 
 
         public DBService()
         {
+
+            asyncDb = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "esperanto.db"));
             if (connection == null)
             {
                 string cale;
@@ -22,6 +28,12 @@ namespace Esperanto.Services
                 Console.WriteLine(cale);
 
                 connection = new SQLiteConnection(cale);
+
+
+                //connection.DropTable<Curs>();
+                //connection.DropTable<Pizza>();
+                //connection.DropTable<Profil>();
+                //connection.DropTable<Comanda>();
 
 
                 connection.CreateTable<Curs>();
@@ -53,8 +65,11 @@ namespace Esperanto.Services
 
         }
 
+        public SQLiteAsyncConnection getAsyncDb()
+        {
+            return this.asyncDb;
+        }
 
-        
 
 
 
@@ -63,6 +78,29 @@ namespace Esperanto.Services
             var x = connection.Query<Profil>("SELECT * FROM Profil");
             Console.WriteLine(x);
             return x;
+        }
+
+        public List<Comanda> GetComenzi(Profil p)
+        {
+            var x = connection.Query<Comanda>("SELECT * FROM Comanda");
+            return x;
+
+           
+        }
+
+
+        public Profil getCurrentProfil()
+        {
+            int idProfilLogat = Convert.ToInt32(Preferences.Get("idProfilLogat", "0"));
+
+            if (idProfilLogat != 0)
+            {
+                DBService dbservice = new DBService();
+                Profil profil = dbservice.CautaProfilDupaId(idProfilLogat);
+                return profil;
+            }
+            return null;
+           
         }
 
         public List<Pizza> GetPizzas()

@@ -27,5 +27,37 @@ namespace Esperanto.Models
 
         public string Adresa { get; set; }
 
+        public string Info { get; set; }
+
+        public Comanda()
+        {
+
+        }
+        public Comanda(List<Pizza> Pizze, Profil Profil, List<int> cantitatiPizza, string Adresa)
+        {
+            this.Pizze = Pizze;
+            this.Profil = Profil;
+            this.cantitatiPizza = cantitatiPizza;
+            this.Adresa = Adresa;
+            this.Info = ListViewDisplay();
+        }
+
+
+        public string ListViewDisplay()
+        {
+            double valoareComanda = 0;
+            string finalString = "Comanda contine " + Pizze.Count + " pizza: \n";
+            for ( int i = 0; i < Pizze.Count; i++)
+            {
+                finalString += Pizze[i].Denumire + " x " + cantitatiPizza[i] + "\n";
+                valoareComanda += Pizze[i].Pret * cantitatiPizza[i];
+            }
+            finalString += "\n A avut/are valoare totala de " + valoareComanda;
+            finalString += "\n Si a fost/urmeaza sa fie livrata la adresa: " + Adresa;
+            return finalString;
+           
+        }
+
+
     }
 }
