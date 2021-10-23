@@ -33,9 +33,16 @@ namespace Esperanto
             var comenzi = await SQLiteNetExtensionsAsync.Extensions.ReadOperations.
                GetAllWithChildrenAsync<Comanda>(asyncConnection);
 
-          
+            var comenzileUseruluiLogat = comenzi.Where(comanda => comanda.Profil.Id == currentProfile.Id);
 
-            comenziListView.ItemsSource = comenzi;
+            List<Comanda> list = new List<Comanda>();
+
+            foreach (var comanda in comenzileUseruluiLogat)
+            {
+                list.Add(comanda);
+            }
+
+            comenziListView.ItemsSource = list;
         }
     }
 }
