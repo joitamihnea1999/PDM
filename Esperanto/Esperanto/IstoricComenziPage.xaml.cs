@@ -33,16 +33,31 @@ namespace Esperanto
             var comenzi = await SQLiteNetExtensionsAsync.Extensions.ReadOperations.
                GetAllWithChildrenAsync<Comanda>(asyncConnection);
 
-            var comenzileUseruluiLogat = comenzi.Where(comanda => comanda.Profil.Id == currentProfile.Id);
-
-            List<Comanda> list = new List<Comanda>();
-
-            foreach (var comanda in comenzileUseruluiLogat)
+           Profil profil = dbService.getCurrentProfil();
+          
+            if (profil == null)
             {
-                list.Add(comanda);
+                await DisplayAlert("Eroare", "Inca nu esti logat!", "OK");
+                await Navigation.PopAsync();
+                await Navigation.PushAsync(new LoginPage());
+
+
+            }
+             else
+            {
+                var comenzileUseruluiLogat = comenzi.Where(comanda => comanda.Profil.Id == currentProfile.Id);
+
+                List<Comanda> list = new List<Comanda>();
+
+                foreach (var comanda in comenzileUseruluiLogat)
+                {
+                    list.Add(comanda);
+                }
+
+                comenziListView.ItemsSource = list;
             }
 
-            comenziListView.ItemsSource = list;
+            
         }
     }
 }

@@ -22,8 +22,9 @@ namespace Esperanto.Services
             {
                 string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "esperanto.db");
                 _instance = new SQLiteConnection(path);
-                
-               _instance.CreateTable<Curs>();
+
+
+                _instance.CreateTable<Curs>();
                _instance.CreateTable<Pizza>();
                _instance.CreateTable<Profil>();
                _instance.CreateTable<Comanda>();

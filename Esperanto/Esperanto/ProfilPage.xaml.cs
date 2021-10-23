@@ -17,20 +17,28 @@ namespace Esperanto
         public ProfilPage()
         {
             InitializeComponent();
+        }
 
-           
-                DBService dbservice = new DBService();
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            DBService dbService = new DBService();
+
+            Profil profil = dbService.getCurrentProfil();
+
+            if (profil == null)
+            {
+                await DisplayAlert("Eroare", "Inca nu esti logat!", "OK");
+                await Navigation.PopAsync();
+                await Navigation.PushAsync(new LoginPage());
+
+
+            } else
+            {
                 List<Profil> listaProfil = new List<Profil>();
-            Profil currentProfil = dbservice.getCurrentProfil();
-            if(currentProfil != null)
-            {
-                listaProfil.Add(currentProfil);
+
+                listaProfil.Add(profil);
                 listViewProfil.ItemsSource = listaProfil;
-            }
-                else
-           
-            {
-                DisplayAlert("Eroare", "Inca nu esti logat!", "OK");
             }
         }
 

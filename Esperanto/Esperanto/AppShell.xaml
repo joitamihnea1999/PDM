@@ -35,6 +35,12 @@
         </ShellContent>
     </FlyoutItem>
 
+    <FlyoutItem Title="Preferinte">
+        <ShellContent>
+            <local:PreferintePage/>
+        </ShellContent>
+    </FlyoutItem>
+
     <FlyoutItem Title="Login">
         <ShellContent>
             <local:LoginPage/>
