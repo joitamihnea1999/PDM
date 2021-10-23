@@ -29,9 +29,8 @@ namespace Esperanto
             string email = entryEmail.Text;
             string parola = entryParola.Text;
 
-            DBService dbservice = new DBService();
-
-            Profil profil = dbservice.CautaProfilDupaEmailSiParola(email, parola);
+            DBService dBService = new DBService();
+            Profil profil = dBService.CautaProfilDupaEmailSiParola(email, parola);
 
             if(profil != null)
             {

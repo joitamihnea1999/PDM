@@ -100,7 +100,7 @@ namespace Esperanto
             }
 
             Comanda c = new Comanda(pizzas, profil, cantitatiPizza, adresa);
-            var asyncConnection = dbService.getAsyncDb();
+            var asyncConnection = AsyncConnection.GetInstance();
 
             await SQLiteNetExtensionsAsync.Extensions.WriteOperations.
               InsertWithChildrenAsync(asyncConnection, c);

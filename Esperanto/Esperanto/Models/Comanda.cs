@@ -39,11 +39,11 @@ namespace Esperanto.Models
             this.Profil = Profil;
             this.cantitatiPizza = cantitatiPizza;
             this.Adresa = Adresa;
-            this.Info = ListViewDisplay();
+            this.Info = generateDisplayString();
         }
 
 
-        public string ListViewDisplay()
+        public string generateDisplayString()
         {
             double valoareComanda = 0;
             string finalString = "Comanda contine " + Pizze.Count + " pizza: \n";
@@ -52,7 +52,7 @@ namespace Esperanto.Models
                 finalString += Pizze[i].Denumire + " x " + cantitatiPizza[i] + "\n";
                 valoareComanda += Pizze[i].Pret * cantitatiPizza[i];
             }
-            finalString += "\n A avut/are valoare totala de " + valoareComanda;
+            finalString += "\n A avut/are valoare totala de " + valoareComanda + " RON";
             finalString += "\n Si a fost/urmeaza sa fie livrata la adresa: " + Adresa;
             return finalString;
            

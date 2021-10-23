@@ -4,7 +4,7 @@
              x:Class="Esperanto.IstoricComenziPage"
              Title="Istoric"
                >
-    <ListView x:Name="comenziListView" SeparatorColor="#406343" SeparatorVisibility="Default" RowHeight="200" >
+    <ListView x:Name="comenziListView" SeparatorColor="#406343" SeparatorVisibility="Default" RowHeight="120" >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell >

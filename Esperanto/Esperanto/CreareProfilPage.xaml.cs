@@ -41,7 +41,6 @@ namespace Esperanto
             if(profilExistent == null)
             {
                 dbservice.AdaugaProfil(profilNou);
-              var x =  dbservice.GetProfils();
                 await DisplayAlert("Succes", "Contul a fost creat cu succes!", "OK");
                
                 await Navigation.PopAsync();

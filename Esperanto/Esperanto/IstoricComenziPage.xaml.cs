@@ -26,11 +26,10 @@ namespace Esperanto
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            DBService dbservice = new DBService();
+            DBService dbService = new DBService();
+            var currentProfile = dbService.getCurrentProfil();
 
-            var currentProfile = dbservice.getCurrentProfil();
-            var asyncConnection = dbservice.getAsyncDb();
-
+            var asyncConnection = AsyncConnection.GetInstance();
             var comenzi = await SQLiteNetExtensionsAsync.Extensions.ReadOperations.
                GetAllWithChildrenAsync<Comanda>(asyncConnection);
 
