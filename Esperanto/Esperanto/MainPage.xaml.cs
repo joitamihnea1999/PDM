@@ -14,21 +14,61 @@ namespace Esperanto
     public partial class MainPage : ContentPage
     {
 
+        private List<Pizza> pizzaInRON = new List<Pizza>();
+        private double currencyValue = 1;
+
         public MainPage()
         {
             InitializeComponent();
-            DBService dbservice = new DBService();
-
-            var pizzas = dbservice.GetPizzas();
-            pizzaListView.ItemsSource = pizzas;
-            var screenWidth = DeviceDisplay.MainDisplayInfo.Width;
-            pizzaListView.RowHeight = screenWidth > 400 ? 400 : 350;
         }
 
-       
-        private void Setari_Clicked(object sender, EventArgs e)
+        public MainPage(double currencyValue = 1)
         {
-            Navigation.PushAsync(new SetariPage());
+            InitializeComponent();
+            this.currencyValue = currencyValue;
+        }
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DBService dbservice = new DBService();
+            pizzaInRON = dbservice.GetPizzas();
+            pizzaListView.ItemsSource = pizzaInRON;
+            pizzaListView.RowHeight = 450;
+            try
+            {
+
+                if (currencyValue != 1)
+                {
+                    List<Pizza> newPizzas = new List<Pizza>();
+                    foreach (var item in pizzaInRON)
+                    {
+                        newPizzas.Add(new Pizza(item.Denumire,  item.Diametru, Math.Round(item.Pret / currencyValue, 2) , item.Image));
+                    }
+
+                    if (pizzaListView.ItemsSource != null)
+                    {
+                        pizzaListView.ItemsSource = null;
+                    }
+                    pizzaListView.ItemsSource = newPizzas;
+                }
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
+            
+
+            
+            
+        }
+
+        private async void Setari_Clicked(object sender, EventArgs e)
+        {        
+      await  Navigation.PushAsync(new SetariPage());
         }
     }
 }

@@ -35,10 +35,9 @@ namespace Esperanto
 
             } else
             {
-                List<Profil> listaProfil = new List<Profil>();
-
-                listaProfil.Add(profil);
-                listViewProfil.ItemsSource = listaProfil;
+                Nume.Text = "Nume: " + profil.Nume;
+                Email.Text = "Email: " + profil.Email;
+                Telefon.Text = "Telefon: " + profil.Telefon;
             }
         }
 

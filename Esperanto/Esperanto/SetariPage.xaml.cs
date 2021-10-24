@@ -33,17 +33,12 @@ namespace Esperanto
             }
 
             pickerValuta.ItemsSource = dictCurs.Keys.ToList();
-
-            pickerValuta.SelectedItem = "EUR";
         }
 
-        private void pickerValutaChanged(object sender, EventArgs e)
+        private async void pickerValutaChanged(object sender, EventArgs e)
         {
             Curs curs = dictCurs[(string)pickerValuta.SelectedItem];
-
-            Preferences.Set("curs_valoare", curs.Valoare);
-            Preferences.Set("curs_valuta", curs.Valuta);
-            Preferences.Set("curs_multiplicator", curs.Multiplicator);
+            await  Navigation.PushAsync(new MainPage(curs.Valoare));
         }
     }
 }

@@ -99,6 +99,12 @@ namespace Esperanto
                 return;
             }
 
+            if(pizzas.Count == 0)
+            {
+                await DisplayAlert("Eroare", "Trebuie sa adaugati cel putin o pizza!", "OK");
+                return;
+            }
+
             Comanda c = new Comanda(pizzas, profil, cantitatiPizza, adresa);
             var asyncConnection = AsyncConnection.GetInstance();
 

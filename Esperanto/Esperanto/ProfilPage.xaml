@@ -5,18 +5,12 @@
              Title="Profil"
                >
     <ContentPage.Content>
-        <ListView x:Name="listViewProfil">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
+
                         <StackLayout>
-                            <Label Text="{Binding Nume, StringFormat='Nume: {0}'}" VerticalOptions="Center"/>
-                            <Label Text="{Binding Email, StringFormat='Email: {0}'}" VerticalOptions="Center"/>
-                            <Label Text="{Binding Telefon, StringFormat='Telefon: {0}'}" VerticalOptions="Center"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <Label  Margin="20" x:Name="Nume" VerticalOptions="Center" FontSize="Medium" TextColor="#406343"  FontAttributes="Bold"/>
+            <Label  Margin="20" x:Name="Email" VerticalOptions="Center" FontSize="Medium" TextColor="#406343" FontAttributes="Bold"/>
+            <Label  Margin="20" x:Name="Telefon" VerticalOptions="Center" FontSize="Medium" TextColor="#406343"  FontAttributes="Bold"/>
+        </StackLayout>
+                    
     </ContentPage.Content>
 </ContentPage>

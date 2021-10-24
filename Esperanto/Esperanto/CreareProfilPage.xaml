@@ -3,18 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Esperanto.CreareProfilPage"
              Title="Creare Cont"
+             Padding="40"
              >
     
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Create your account" Margin="40"
-            
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout WidthRequest="400"  HorizontalOptions="Center">
+            <Label Text="Create your account" Margin="40" HorizontalOptions="Center"  FontSize="Medium" TextColor="#406343"  FontAttributes="Bold"
+                />
 
-            <Entry Keyboard="Text" x:Name="entryEmail" Placeholder="Email"/>
+            <Entry Keyboard="Text" x:Name="entryEmail" Placeholder="Email" />
+
+            <Label  Margin="5" x:Name="EmailError" VerticalOptions="Center" FontSize="Small" TextColor="#cc0000"  FontAttributes="Bold"/>
+
+
             <Entry Keyboard="Text" x:Name="entryParola" IsPassword="True" Placeholder="Parola"/>
+            
+            <Label  Margin="5" x:Name="PassError" VerticalOptions="Center" FontSize="Small" TextColor="#cc0000"  FontAttributes="Bold"/>
+
+
             <Entry Keyboard="Text" x:Name="entryNume" Placeholder="Nume"/>
+
+            <Label  Margin="5" x:Name="NameError" VerticalOptions="Center" FontSize="Small" TextColor="#cc0000"  FontAttributes="Bold"/>
+
+
             <Entry Keyboard="Text" x:Name="entryTelefon"  Placeholder="Telefon"/>
+
+            <Label  Margin="5" x:Name="TelefonError" VerticalOptions="Center" FontSize="Small" TextColor="#cc0000"  FontAttributes="Bold"/>
+
+
             <Button Text="Salveaza" Clicked="SalveazaCont_Clicked" />
 
 

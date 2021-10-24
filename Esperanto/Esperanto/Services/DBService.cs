@@ -10,20 +10,13 @@ namespace Esperanto.Services
 {
     class DBService
     {
-     
-
-
 
         private  SQLiteConnection connection;
 
         public DBService()
         {
-
             connection = SyncConnection.GetInstance();
-
-            
         }
-
 
 
         public List<Comanda> GetComenzi(Profil p)

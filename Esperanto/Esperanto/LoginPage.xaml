@@ -7,8 +7,9 @@
     
     <ContentPage.Content>
         <StackLayout WidthRequest="400" Margin="40" HorizontalOptions="Center">
-          
+
             <Entry Keyboard="Text" x:Name="entryEmail" Placeholder="Email" StyleClass="input" ClearButtonVisibility="WhileEditing" />
+
             <Entry Keyboard="Text" x:Name="entryParola" IsPassword="true" StyleClass="input" Placeholder="Password"/>
 
             <Button Text="Login" Clicked="Login_Clicked" />

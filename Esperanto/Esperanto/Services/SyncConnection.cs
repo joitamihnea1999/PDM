@@ -23,7 +23,6 @@ namespace Esperanto.Services
                 string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "esperanto.db");
                 _instance = new SQLiteConnection(path);
 
-
                 _instance.CreateTable<Curs>();
                _instance.CreateTable<Pizza>();
                _instance.CreateTable<Profil>();
@@ -34,16 +33,16 @@ namespace Esperanto.Services
                 if (pizzas.Count == 0)
                 {
                     List<Pizza> initialPizzas = new List<Pizza>();
-                    initialPizzas.Add(new Pizza("Capriciosa", 30, 25, "Pizza"));
-                    initialPizzas.Add(new Pizza("Neapolitan", 30, 28, "Pizza"));
-                    initialPizzas.Add(new Pizza("Chicago ", 30, 29, "Pizza"));
-                    initialPizzas.Add(new Pizza("New York-Style", 30, 30, "Pizza"));
-                    initialPizzas.Add(new Pizza("Sicilian", 30, 30, "Pizza"));
-                    initialPizzas.Add(new Pizza("Greek ", 30, 25, "Pizza"));
-                    initialPizzas.Add(new Pizza("California ", 30, 25, "Pizza"));
-                    initialPizzas.Add(new Pizza("Detroit ", 30, 30, "Pizza"));
-                    initialPizzas.Add(new Pizza("Tonda Romana", 30, 30, "Pizza"));
-                    initialPizzas.Add(new Pizza("Fritta ", 30, 30, "Pizza"));
+                    initialPizzas.Add(new Pizza("Detroit ", 30, 30, "Detroit"));
+                    initialPizzas.Add(new Pizza("Sicilian", 30, 30, "Sicilian"));
+                    initialPizzas.Add(new Pizza("Fritta ", 30, 30, "Fritta"));
+                    initialPizzas.Add(new Pizza("Capriciosa", 30, 25, "Capriciosa"));
+                    initialPizzas.Add(new Pizza("Neapolitan", 30, 28, "Neapolitan"));
+                    initialPizzas.Add(new Pizza("Chicago ", 30, 29, "Chicago"));
+                    initialPizzas.Add(new Pizza("New York-Style", 30, 30, "NewYork"));
+                    initialPizzas.Add(new Pizza("Greek ", 30, 25, "Greek"));
+                    initialPizzas.Add(new Pizza("California ", 30, 25, "California"));
+                    initialPizzas.Add(new Pizza("Tonda Romana", 30, 30, "Romana"));
 
                    _instance.InsertAll(initialPizzas);
 

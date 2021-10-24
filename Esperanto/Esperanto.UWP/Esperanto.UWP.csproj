@@ -132,8 +132,17 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="Background.png" />
-    <Content Include="Pizza.jpg" />
+    <Content Include="California.jpg" />
+    <Content Include="Capriciosa.jpg" />
+    <Content Include="Chicago.jpg" />
+    <Content Include="Detroit.jpg" />
+    <Content Include="Fritta.jpg" />
+    <Content Include="Greek.jpg" />
+    <Content Include="Neapolitan.jpg" />
+    <Content Include="NewYork.jpg" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Romana.jpg" />
+    <Content Include="Sicilian.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
